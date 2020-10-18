@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import FooterBar from '@/components/FooterSideBar'
+import FooterBar from '@components/FooterBar'
 
 export default {
   name: 'App',
@@ -17,4 +17,8 @@ export default {
 </script>
 
 <style lang="scss">
+#app {
+  display: block;
+  width: 100%;
+}
 </style>
