@@ -32,7 +32,7 @@ export default new Router({
     },
     {
       path: '/',
-      redirect: '/my'
+      redirect: '/home'
     }
   ]
 })

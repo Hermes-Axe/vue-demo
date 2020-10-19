@@ -18,7 +18,7 @@ export default {
 
 <style lang="scss">
 #app {
-  display: block;
+  /*display: block;*/
   width: 100%;
 }
 </style>
