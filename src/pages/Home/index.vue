@@ -2,9 +2,13 @@
   <div id="home">
     <header>
       <div class="input-box">
-        <i class="iconfont icon-sousuo"></i>
-        <span>请输入商家名称</span>
-        <input type="text" v-model="userInput">
+        <i class="iconfont icon-sousuo" :class="{focus: isInputFocus}"></i>
+        <span v-show="!isInputFocus">请输入商家名称</span>
+        <input type="text"
+          v-model="userInput"
+          @focus="inputFocusHandler"
+          @blur="isInputFocus=false"
+        >
       </div>
       <div class="position">
         <i class="iconfont icon-weizhi"></i>
@@ -304,14 +308,30 @@
 export default {
   data () {
     return {
-      userInput: ''
+      userInput: '',
+      isInputFocus: false
     }
   },
-  methods: {}
+  methods: {
+    inputFocusHandler () {
+      console.log('focus')
+      this.isInputFocus = true
+    }
+  }
 }
 </script>
 
 <style lang="scss">
+@keyframes iconFlow {
+  from {
+    left: 3%;
+    opacity: 1;
+  }
+  to {
+    left: 85%;
+    opacity: 0.6;
+  }
+}
 #home {
   width: 100%;
   header {
@@ -337,7 +357,11 @@ export default {
         font-size: 20px;
         position: absolute;
         line-height: 30px;
-        left: 12px;
+        left: 3%;
+        transition: all 0.6s;
+        &.focus {
+          animation: iconFlow .2s linear forwards;
+        }
       }
       input {
         width: 100%;
@@ -345,7 +369,7 @@ export default {
         border: none;
         outline: none;
         font-size: 16px;
-        text-indent: 3em;
+        text-indent: 16px;
         border-radius: 15px;
         position: absolute;
         background-color: transparent;
@@ -354,6 +378,7 @@ export default {
         position: absolute;
         line-height: 30px;
         left: 40px;
+        transition: all 0.6s;
       }
     }
     .position {
