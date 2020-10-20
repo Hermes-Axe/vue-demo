@@ -2,9 +2,14 @@
   <div id="home">
     <header>
       <div class="input-box">
-        <i class="iconfont icon-sousuo"></i>
-        <span>请输入商家名称</span>
-        <input type="text" v-model="userInput">
+        <i class="iconfont icon-sousuo" :class="{ focus: isInputFocus }"></i>
+        <span :class="{ focus: isInputFocus }">请输入商家名称</span>
+        <input
+          type="text"
+          v-model="userInput"
+          @focus="isInputFocus=true"
+          @blur="isInputFocus=false"
+        >
       </div>
       <div class="position">
         <i class="iconfont icon-weizhi"></i>
@@ -15,7 +20,7 @@
       <!-- 轮播图 -->
       <div class="pic-box">
         <div class="pic-box-item">
-          <img src="@/assets/images/pic_01.png" alt="pic 01">
+          <img src="@/assets/images/pic_02.jpg" alt="pic 01">
         </div>
         <div class="pic-box-item">
           <img src="@/assets/images/pic_02.jpg" alt="pic 01">
@@ -304,7 +309,9 @@
 export default {
   data () {
     return {
-      userInput: ''
+      userInput: '',
+      // 输入框是否聚焦
+      isInputFocus: false
     }
   },
   methods: {}
@@ -337,7 +344,13 @@ export default {
         font-size: 20px;
         position: absolute;
         line-height: 30px;
-        left: 12px;
+        left: 5%;
+        opacity: 1;
+        transition: all .3s;
+        &.focus {
+          left: 80%;
+          opacity: 0.6;
+        }
       }
       input {
         width: 100%;
@@ -345,7 +358,7 @@ export default {
         border: none;
         outline: none;
         font-size: 16px;
-        text-indent: 3em;
+        text-indent: 12px;
         border-radius: 15px;
         position: absolute;
         background-color: transparent;
@@ -354,6 +367,11 @@ export default {
         position: absolute;
         line-height: 30px;
         left: 40px;
+        opacity: 1;
+        transition: all .3s;
+        &.focus {
+          opacity: 0;
+        }
       }
     }
     .position {
