@@ -2,11 +2,12 @@
   <div id="home">
     <header>
       <div class="input-box">
-        <i class="iconfont icon-sousuo" :class="{focus: isInputFocus}"></i>
-        <span v-show="!isInputFocus">请输入商家名称</span>
-        <input type="text"
+        <i class="iconfont icon-sousuo" :class="{ focus: isInputFocus }"></i>
+        <span :class="{ focus: isInputFocus }">请输入商家名称</span>
+        <input
+          type="text"
           v-model="userInput"
-          @focus="inputFocusHandler"
+          @focus="isInputFocus=true"
           @blur="isInputFocus=false"
         >
       </div>
@@ -19,13 +20,13 @@
       <!-- 轮播图 -->
       <div class="pic-box">
         <div class="pic-box-item">
-          <img src="@/assets/images/pic_01.png" alt="pic 01">
+          <img src="https://i0.hdslb.com/bfs/bangumi/image/84ad35aebfb007ffd0fb50125b1cb2c874f80ae4.png@87w_88h_1c_100q.webp" alt="pic 01">
         </div>
         <div class="pic-box-item">
-          <img src="@/assets/images/pic_02.jpg" alt="pic 01">
+          <img src="https://i0.hdslb.com/bfs/bangumi/image/191219e5e5172cba1ff16fe43be3737e499700dc.png@87w_88h_1c_100q.webp" alt="pic 01">
         </div>
         <div class="pic-box-item">
-          <img src="@/assets/images/pic_03.jpeg" alt="pic 01">
+          <img src="https://i0.hdslb.com/bfs/bangumi/image/f68e9476bce5c882201a79e9f46c99085e217080.png@87w_88h_1c_100q.webp" alt="pic 01">
         </div>
         <ul class="pic-dot">
           <li class="on"></li>
@@ -313,10 +314,10 @@ export default {
     }
   },
   methods: {
-    inputFocusHandler () {
-      console.log('focus')
-      this.isInputFocus = true
-    }
+    // inputFocusHandler () {
+    //   console.log('focus')
+    //   this.isInputFocus = true
+    // }
   }
 }
 </script>
@@ -358,9 +359,11 @@ export default {
         position: absolute;
         line-height: 30px;
         left: 3%;
-        transition: all 0.6s;
+        opacity: 1;
+        transition: all .3s;
         &.focus {
-          animation: iconFlow .2s linear forwards;
+          left: 80%;
+          opacity: 0.6;
         }
       }
       input {
@@ -378,7 +381,11 @@ export default {
         position: absolute;
         line-height: 30px;
         left: 40px;
-        transition: all 0.6s;
+        opacity: 1;
+        transition: all .3s;
+        &.focus {
+          opacity: 0;
+        }
       }
     }
     .position {

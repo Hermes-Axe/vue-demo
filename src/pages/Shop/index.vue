@@ -1,9 +1,13 @@
 <template>
-  <div>Shop</div>
+  <ShopItem></ShopItem>
 </template>
 
 <script>
+import ShopItem from '@components/ShopItem'
 export default {
+  components: {
+    ShopItem
+  }
 }
 </script>
 
