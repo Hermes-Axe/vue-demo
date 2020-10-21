@@ -20,5 +20,6 @@ export default {
 #app {
   /*display: block;*/
   width: 100%;
+  background-color: #666;
 }
 </style>

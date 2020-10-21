@@ -295,23 +295,34 @@
       </div>
       <!-- 商家列表 -->
       <div class="shop-brif">
-        <div class="shop-list">1</div>
-        <div class="shop-list">2</div>
-        <div class="shop-list">3</div>
-        <div class="shop-list">4</div>
-        <div class="shop-list">5</div>
+        <ShopItem :shopName="shop1Name" :shopImgUrl="shop1Img" class="shop-item"></ShopItem>
+        <ShopItem :shopName="shop2Name" :shopImgUrl="shop2Img" class="shop-item"></ShopItem>
+        <!-- <ShopItem class="shop-item"></ShopItem>
+        <ShopItem class="shop-item"></ShopItem>
+        <ShopItem class="shop-item"></ShopItem>
+        <ShopItem class="shop-item"></ShopItem>
+        <ShopItem class="shop-item"></ShopItem>
+        <ShopItem class="shop-item"></ShopItem> -->
       </div>
     </main>
   </div>
 </template>
 
 <script>
+import ShopItem from '@components/ShopItem'
 export default {
   data () {
     return {
       userInput: '',
-      isInputFocus: false
+      isInputFocus: false,
+      shop1Name: '华莱士·全鸡汉堡(仓前杭师大店)',
+      shop1Img: 'https://i0.hdslb.com/bfs/bangumi/1d703634cd3ee35b625bf882f27289db301cae63.jpg@87w_88h_1c_100q.webp',
+      shop2Name: '122212221',
+      shop2Img: 'https://i0.hdslb.com/bfs/bangumi/image/0d7b110516ea8f9dc2481e50db85df9361368575.png@87w_88h_1c_100q.webp'
     }
+  },
+  components: {
+    ShopItem
   },
   methods: {
     // inputFocusHandler () {
@@ -323,16 +334,6 @@ export default {
 </script>
 
 <style lang="scss">
-@keyframes iconFlow {
-  from {
-    left: 3%;
-    opacity: 1;
-  }
-  to {
-    left: 85%;
-    opacity: 0.6;
-  }
-}
 #home {
   width: 100%;
   header {
@@ -396,9 +397,11 @@ export default {
     }
   }
   main {
+    background-color: #eee;
     width: 100%;
     box-sizing: border-box;
     padding: 10px;
+    padding-bottom: 16px;
     margin: 60px 0;
     .pic-box {
       width: 100%;
@@ -442,6 +445,9 @@ export default {
       width: 100%;
       height: 140px;
       margin-bottom: 20px;
+      background-color: #fff;
+      border-radius: 6px;
+      padding: 12px 0;
       table {
         width: 100%;
         tr {
@@ -457,7 +463,7 @@ export default {
             flex-direction: column;
             align-items: center;
             // justify-content: space-between;
-            padding: 0 6px;
+            // padding: 0 6px;
             svg {
               width: 40px;
               height: 40px;
@@ -474,29 +480,10 @@ export default {
     }
     .shop-brif {
       width: 100%;
-      .shop-list {
-        width: 100%;
-        height: 160px;
-        background-color: blue;
-        margin-bottom: 10px;
-        border-radius: 6px;
+      .shop-item {
+        margin-bottom: 16px;
         &:last-child {
           margin-bottom: 0;
-        }
-        &:nth-child(1) {
-          background: tomato;
-        }
-        &:nth-child(2) {
-          background: yellow;
-        }
-        &:nth-child(3) {
-          background: yellowgreen;
-        }
-        &:nth-child(4) {
-          background: skyblue;
-        }
-        &:nth-child(5) {
-          background: rebeccapurple;
         }
       }
     }
