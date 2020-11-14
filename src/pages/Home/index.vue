@@ -295,8 +295,8 @@
       </div>
       <!-- 商家列表 -->
       <div class="shop-brif">
-        <ShopItem :shopName="shop1Name" :shopImgUrl="shop1Img" class="shop-item"></ShopItem>
-        <ShopItem :shopName="shop2Name" :shopImgUrl="shop2Img" class="shop-item"></ShopItem>
+        <shop-item :shopName="shop1Name" :shopImgUrl="shop1Img" class="shop-item"></shop-item>
+        <shop-item :shopName="shop2Name" :shopImgUrl="shop2Img" class="shop-item"></shop-item>
         <!-- <ShopItem class="shop-item"></ShopItem>
         <ShopItem class="shop-item"></ShopItem>
         <ShopItem class="shop-item"></ShopItem>
@@ -322,7 +322,7 @@ export default {
     }
   },
   components: {
-    ShopItem
+    'shop-item': ShopItem
   },
   methods: {
     // inputFocusHandler () {

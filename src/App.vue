@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <FooterBar></FooterBar>
+    <footer-bar></footer-bar>
   </div>
 </template>
 
@@ -11,7 +11,7 @@ import FooterBar from '@components/FooterBar'
 export default {
   name: 'App',
   components: {
-    FooterBar
+    'footer-bar': FooterBar
   }
 }
 </script>
