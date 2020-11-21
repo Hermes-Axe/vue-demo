@@ -37,7 +37,8 @@ module.exports = {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
       '@components': path.join(__dirname, '..', 'src', 'components'),
-      '@pages': path.join(__dirname, '..', 'src', 'pages')
+      '@pages': path.join(__dirname, '..', 'src', 'pages'),
+      '@image': path.join(__dirname, '..', 'static', 'images')
     }
   },
   module: {

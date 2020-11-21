@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div v-for="(item, index) in shopList" :key="index">
+  <div id="shop-list-page">
+    <div v-for="(item, index) in shopList" :key="index" class="shop-item">
       <shop-item :shop="item"></shop-item>
     </div>
   </div>
@@ -16,14 +16,41 @@ export default {
     return {
       shopList: [
         {
-          shopName: '华莱士·全鸡汉堡(仓前杭师大店)',
-          shopImgUrl: 'https://i0.hdslb.com/bfs/bangumi/1d703634cd3ee35b625bf882f27289db301cae63.jpg@87w_88h_1c_100q.webp',
+          shopName: '14265235225222232214265235222232222',
+          shopImgUrl: '../../../static/images/shop01.jpg',
           score: 4.9,
           monthData: 100,
           time: 356,
           distance: 666,
-          isNight: false,
-          tag: 'lalala'
+          tag: 'lalalaaaa',
+          driver: {
+            isNight: true,
+            cost: 20,
+            nightCost: 100,
+            isBlueDriver: true
+          },
+          activeTag: [
+            '20减19',
+            '100减99'
+          ]
+        },
+        {
+          shopName: '111121',
+          shopImgUrl: '../../../static/images/shop02.png',
+          score: 0.6,
+          monthData: 465,
+          time: 14,
+          distance: 5,
+          tag: 'frchanch',
+          driver: {
+            isNight: true,
+            cost: 2.5,
+            nightCost: 5,
+            isBlueDriver: false
+          },
+          activeTag: [
+            '45减23'
+          ]
         }
       ]
     }
@@ -32,5 +59,13 @@ export default {
 </script>
 
 <style lang="scss">
-
+#shop-list-page {
+  padding: 10px;
+  .shop-item {
+    padding-bottom: 10px;
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+}
 </style>

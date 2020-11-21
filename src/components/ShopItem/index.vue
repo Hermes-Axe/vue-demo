@@ -24,11 +24,11 @@
       <!-- 起送价 -->
       <div class="price">
         <div>
-          <span class="start-price">起送价￥20</span>
-          <span class="night-send-price" v-if="shop.isNight">夜间配送￥1</span>
+          <span class="start-price">起送价￥{{ shop.driver.cost }}</span>
+          <span class="night-send-price" v-if="shop.driver.isNight">夜间配送￥{{ shop.driver.nightCost }}</span>
         </div>
         <div>
-          <span class="driver">蓝骑士专送</span>
+          <span class="driver" v-if="shop.driver.isBlueDriver">蓝骑士专送</span>
         </div>
       </div>
       <!-- 店铺标签 -->
@@ -38,7 +38,7 @@
       <!-- tag -->
       <div class="active-tags">
         <div class="tags">
-          <span>49减34</span><span>69减44</span>
+          <span v-for="(item, index) in shop.activeTag" :key="index">{{ item }}</span>
         </div>
         <div>
           <i class="iconfont icon-jiantou9"></i>
@@ -55,18 +55,34 @@ export default {
       type: Object,
       required: true,
 
-      isNight: Boolean,
+      // 配送费
+      driver: {
+        // 起送价
+        cost: Number,
+        // 是否是夜间
+        isNight: Boolean,
+        // 夜间配送费
+        nightCost: Number,
+        // 是否是蓝骑士专送
+        isBlueDriver: { type: Boolean, default: true }
+      },
+      // 商店名称
       shopName: { type: String, required: true },
+      // 商店图片连接
       shopImgUrl: { type: String, required: true },
+      // 商店分数
       score: { type: Number, required: true },
+      // 月售数量
       monthData: { type: Number },
+      // 配送时间
       time: Number,
+      // 配送距离
       distance: Number,
-      tag: String
+      // 商店特色标签
+      tag: String,
+      // 商店满减活动
+      activeTag: Array
     }
-    // shop.shopName: { type: String, required: true },
-    // shopImgUrl: { type: String, required: true },
-    // score: { type: Number, required: true }
   }
 }
 </script>
@@ -75,24 +91,25 @@ export default {
 #shop-item {
   display: flex;
   align-items: top;
-  justify-content: flex-start;
+  justify-content: space-between;
   background-color: #fff;
   border-radius: 6px;
   padding: 10px;
   box-sizing: border-box;
-  flex: 1;
+  flex-direction: row;
   .shop-item-left {
-    width: 40%;
+    // width: 36%;
+    margin-right: 20px;
     img {
       display: block;
       width: 100px;
       height: 100px;
       border-radius: 6px;
-      background: red;
     }
   }
   .shop-item-right {
-    width: 60%;
+    // width: 64%;
+    flex: auto;
     font-size: 16px;
     display: flex;
     flex-direction: column;

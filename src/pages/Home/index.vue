@@ -18,7 +18,7 @@
     </header>
     <main>
       <!-- 轮播图 -->
-      <div class="pic-box">
+      <!-- <div class="pic-box">
         <div class="pic-box-item">
           <img src="https://i0.hdslb.com/bfs/bangumi/image/84ad35aebfb007ffd0fb50125b1cb2c874f80ae4.png@87w_88h_1c_100q.webp" alt="pic 01">
         </div>
@@ -33,7 +33,7 @@
           <li></li>
           <li></li>
         </ul>
-      </div>
+      </div> -->
       <!-- 吃货分类按钮 -->
       <div class="switches">
         <table>
@@ -295,14 +295,7 @@
       </div>
       <!-- 商家列表 -->
       <div class="shop-brif">
-        <shop-item :shopName="shop1Name" :shopImgUrl="shop1Img" class="shop-item"></shop-item>
-        <shop-item :shopName="shop2Name" :shopImgUrl="shop2Img" class="shop-item"></shop-item>
-        <!-- <ShopItem class="shop-item"></ShopItem>
-        <ShopItem class="shop-item"></ShopItem>
-        <ShopItem class="shop-item"></ShopItem>
-        <ShopItem class="shop-item"></ShopItem>
-        <ShopItem class="shop-item"></ShopItem>
-        <ShopItem class="shop-item"></ShopItem> -->
+        <shop-item :shop="item" v-for="(item, index) in shopList" :key="index" class="shop-item"></shop-item>
       </div>
     </main>
   </div>
@@ -310,19 +303,57 @@
 
 <script>
 import ShopItem from '@components/ShopItem'
+// import { Slide, SlideItem } from 'cube-ui'
 export default {
+  components: {
+    'shop-item': ShopItem
+    // Slide,
+    // SlideItem
+  },
   data () {
     return {
       userInput: '',
       isInputFocus: false,
-      shop1Name: '华莱士·全鸡汉堡(仓前杭师大店)',
-      shop1Img: 'https://i0.hdslb.com/bfs/bangumi/1d703634cd3ee35b625bf882f27289db301cae63.jpg@87w_88h_1c_100q.webp',
-      shop2Name: '122212221',
-      shop2Img: 'https://i0.hdslb.com/bfs/bangumi/image/0d7b110516ea8f9dc2481e50db85df9361368575.png@87w_88h_1c_100q.webp'
+      shopList: [
+        {
+          shopName: '14265235225222232214265235222232222',
+          shopImgUrl: '../../../static/images/shop01.jpg',
+          score: 4.9,
+          monthData: 100,
+          time: 356,
+          distance: 666,
+          tag: 'lalalaaaa',
+          driver: {
+            isNight: true,
+            cost: 20,
+            nightCost: 100,
+            isBlueDriver: true
+          },
+          activeTag: [
+            '20减19',
+            '100减99'
+          ]
+        },
+        {
+          shopName: '111121',
+          shopImgUrl: '../../../static/images/shop02.png',
+          score: 0.6,
+          monthData: 465,
+          time: 14,
+          distance: 5,
+          tag: 'frchanch',
+          driver: {
+            isNight: true,
+            cost: 2.5,
+            nightCost: 5,
+            isBlueDriver: false
+          },
+          activeTag: [
+            '45减23'
+          ]
+        }
+      ]
     }
-  },
-  components: {
-    'shop-item': ShopItem
   },
   methods: {
     // inputFocusHandler () {
